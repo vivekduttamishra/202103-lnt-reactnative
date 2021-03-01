@@ -1,1 +1,1 @@
-document.write('H
+(a,b)=> a*a+b*b
