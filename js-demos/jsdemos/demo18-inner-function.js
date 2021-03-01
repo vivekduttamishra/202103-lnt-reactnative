@@ -1,11 +1,11 @@
 
 
 let outer= function(){
-
+    //creating a new function
     function inner(){
         console.log('I am inner function');
     }
-
+    //returning the newly created function
     return inner;
 
 }

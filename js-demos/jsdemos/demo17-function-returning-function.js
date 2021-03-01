@@ -21,7 +21,7 @@ function greeter(){
 
 let getHourGreeter = (hours)=>{
     if(hours<12)
-        return goodMorning;
+        return goodMorning; //returning existing function
     else if(hours<18)
         return goodAfternoon;
     else 
