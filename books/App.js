@@ -1,22 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View, SafeAreaView } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to</Text>
-      <Text>Books App</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+let viewStyle={
+    marginTop:100,
+    marginLeft:100,
+    backgroundColor: '#FC0'
+};
+let titleStyle={
+    fontSize:40
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+//what UI should my application display
+//whatever default export App.js provides is used as 
+//main application for my React Native
+export default function () {
+
+    let title='Book App';
+
+    let subTitle='Book List';
+
+    return (
+                <View style={viewStyle} >
+                    <Text style={titleStyle}>{title}</Text>
+
+                    <Text style={{color:'red'}}>{subTitle}</Text>
+                </View>
+   );
+}
