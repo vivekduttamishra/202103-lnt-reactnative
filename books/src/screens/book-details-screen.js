@@ -5,39 +5,23 @@ import LabeledValue from '../components/labeled-value';
 import globalStyle from '../styles/global';
 import Colors from '../styles/colors';
 import toast from '../components/toast';
+import BookDetails from '../components/book-details';
 
 
-const BookDetailsScreen=({title,author,price,rating,votes})=>{
+const BookDetailsScreen=({navigation})=>{
 
-    
-    let onButtonClick=()=>{
-      console.log('Added To Favorite');
-      toast('Added to Favorite');
-    }
-
-    return (
-      <ScrollView style={styles.container}>
-          <View style={styles.buttonStyle}>
-            <Button color={Colors.primaryColor} 
-                   title='Add to Favorite' 
-                   onPress={onButtonClick}
-                   />
-          </View>
-          <Text style={styles.title}>{title}</Text>
-         
-         <LabeledValue label='Author' value={author} />
-         <LabeledValue label='Price' value={`Rs ${price}`} />
-         <LabeledValue label='rating' value={`${rating} out of 5 (${votes} votes)`} />
-         
-          <Image style={styles.coverImage} 
-                 source={require('../../assets/the-accursed-god-small.jpg')}
-                 resizeMode='cover'
-          />
-
-          
-      </ScrollView>
-    );
+    let book= navigation.getParam('book');
+    return <BookDetails book={book} />
  };
+
+
+ BookDetailsScreen.navigationOptions=({navigation})=>{
+
+  return {
+    headerTitle: navigation.getParam('book').title
+  };
+
+ }
 
 
  const styles=StyleSheet.create({
@@ -62,6 +46,8 @@ const BookDetailsScreen=({title,author,price,rating,votes})=>{
       alignSelf:'center'
     }
  })
+
+
 
  export default BookDetailsScreen;
  

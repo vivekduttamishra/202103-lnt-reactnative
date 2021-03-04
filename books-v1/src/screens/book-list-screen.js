@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-import { FontAwesome5 } from '@expo/vector-icons';
 import { View, Text, FlatList,Modal, Button, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import globalStyle from '../styles/global';
 import books from '../data/books';
@@ -29,10 +28,12 @@ let BookListItem = ({ book,onSelection }) => {
 
 const BookListScreen = ({ navigation, children }) => {
 
-    
+    const [selectedBook, selectBook]=useState(null);
 
     const onSelect=(book)=>{
-        navigation.navigate('Book Details',{book});
+        //toast(book.title);
+        //setState({selectedBook:book});
+        selectBook(book);
     }
     //Todo Init
     return (
@@ -50,24 +51,21 @@ const BookListScreen = ({ navigation, children }) => {
                 }
 
             />
-           
+            <Modal visible={selectedBook!==null}  animationType="slide">
+                <View style={styles.modalStyle}>
+                    
+                    <BookDetails book={selectedBook} />
+                    <View><Button 
+                                title="Close"
+                                onPress={()=>selectBook(null)}    
+                            />
+                    </View>
+                    
+                </View>
+            </Modal>
         </View>
     );
 };
-
-BookListScreen.navigationOptions=({navigation})=>{
-
-    return {
-        headerRight:(
-            <TouchableOpacity style={styles.iconButton} 
-                    onPress={()=>navigation.navigate('Book Add')}
-                >
-                <FontAwesome5 style={styles.icon} name="book-medical" size={32} color="black" />
-            </TouchableOpacity>
-        )
-    }
-
-}
 
 
 const styles = StyleSheet.create({
@@ -83,13 +81,6 @@ const styles = StyleSheet.create({
         width: "50%",
         height: 300,
         marginVertical:20
-    },
-    iconButton:{
-        marginRight:10,
-        paddingRight:10
-    },
-    icon:{
-        fontSize:28
     },
     listItem: {
         margin: 10,
