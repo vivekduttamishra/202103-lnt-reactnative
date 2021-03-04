@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet,Text,View,Button} from 'react-native';
+import {StyleSheet,ScrollView,Text,Image,View,Button} from 'react-native';
 
 import LabeledValue from '../components/labeled-value';
 import globalStyle from '../styles/global';
@@ -16,20 +16,26 @@ const BookDetailsScreen=({title,author,price,rating,votes})=>{
     }
 
     return (
-      <View style={styles.container}>
-          <Text style={styles.title}>{title}</Text>
-         
-         <LabeledValue label='Author' value={author} />
-         <LabeledValue label='Price' value={`Rs ${price}`} />
-         <LabeledValue label='rating' value={`${rating} out of 5 (${votes} votes)`} />
-          
+      <ScrollView style={styles.container}>
           <View style={styles.buttonStyle}>
             <Button color={Colors.primaryColor} 
                    title='Add to Favorite' 
                    onPress={onButtonClick}
                    />
           </View>
-      </View>
+          <Text style={styles.title}>{title}</Text>
+         
+         <LabeledValue label='Author' value={author} />
+         <LabeledValue label='Price' value={`Rs ${price}`} />
+         <LabeledValue label='rating' value={`${rating} out of 5 (${votes} votes)`} />
+         
+          <Image style={styles.coverImage} 
+                 source={require('../../assets/the-accursed-god-small.jpg')}
+                 resizeMode='cover'
+          />
+
+          
+      </ScrollView>
     );
  };
 
@@ -42,8 +48,18 @@ const BookDetailsScreen=({title,author,price,rating,votes})=>{
     },
     buttonStyle:{
       
-      margin:50
+      margin:5,
+      alignSelf:'flex-end'
       
+    },
+    coverImage:{
+      ...globalStyle.boxShadow,
+      padding:5,
+      borderWidth:5,
+      borderColor:Colors.accentColor,
+      height:600,
+      width:'100%',
+      alignSelf:'center'
     }
  })
 
