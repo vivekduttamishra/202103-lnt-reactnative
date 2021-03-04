@@ -44,7 +44,7 @@ class BookAddScreen extends React.Component {
 
                 <LabeledInput label='Price'
                     value={this.state.price}
-                    onChange={price => this.setState({ price })} />
+                    onChange={price => this.setState({ price: parseFloat(price) })} />
 
                 <LabeledInput label='Cover Url'
                     value={this.state.coverUrl}

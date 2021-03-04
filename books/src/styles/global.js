@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         color: Colors.screenTitleColor,
         fontSize: 30,
-        fontFamily: 'script',
+        //fontFamily: 'script',
         textAlign: 'center',
         fontWeight: 'bold'
     },

@@ -20,6 +20,9 @@ class LabeledInput extends React.Component {
                 <View style={styles.labeledInputContainer}>
                     <Text style={styles.label}>{this.props.label}</Text>
                     <TextInput 
+                                autoCapitalize="none"
+                                autoCorrect={false}
+
                                 value={this.state.value}
                                 style={styles.textInput} 
                                 placeholder={this.props.placeholder||this.props.label}

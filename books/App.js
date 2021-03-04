@@ -5,13 +5,15 @@ import { View, StyleSheet } from 'react-native';  //is a react based library for
 import AppHeader from './src/components/app-header';
 import BookDetailsScreen from './src/screens/book-details-screen';
 import BookAddScreen from './src/screens/book-add-screen';
+import BookListScreen from './src/screens/book-list-screen';
+
 import globalStyle from './src/styles/global';
 
 const App = () => (
 
     <View style={styles.container}>
         <AppHeader heading='All About Books' displayDate={true} />
-        <BookAddScreen/>
+        <BookListScreen/>
 
         {/* <BookDetailsScreen
             title='The Accursed God'

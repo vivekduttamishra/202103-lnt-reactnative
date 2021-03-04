@@ -30,8 +30,8 @@ const styles=StyleSheet.create({
     headerStyle: {
         color: Colors.headerTitleColor,
         fontSize: 30,
-        marginTop: 20,
-        fontFamily: 'script'
+        marginTop: 20
+       // fontFamily: 'script'
 
 
     },
@@ -40,7 +40,7 @@ const styles=StyleSheet.create({
         textAlign: 'right',
         fontSize: 12,
         fontWeight: 'bold',
-        fontFamily: 'courier',
+        //fontFamily: 'courier',
         color: Colors.accentColor
     }
 })

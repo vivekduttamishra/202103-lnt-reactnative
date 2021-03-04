@@ -5,7 +5,7 @@ let Colors= {
     titleColor: '#FC0',
     headerBackgroundColor:'crimson',
     primaryColor:'crimson',
-    accentColor:'white',
+    accentColor:'black',
     headerTitleColor: '#FC0',
     screenTitleColor:'black',
     bodyTextColor:'black'
