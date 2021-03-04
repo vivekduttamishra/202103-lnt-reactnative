@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet,ScrollView,Text,Image,View,Modal,Button} from 'react-native';
+
+import {StyleSheet,ScrollView,TouchableOpacity,Text,Image,View,Modal,Button} from 'react-native';
 
 import LabeledValue from '../components/labeled-value';
 import globalStyle from '../styles/global';
