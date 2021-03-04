@@ -148,7 +148,7 @@ export default [
         "series": "Harry Potter",
         "seriesIndex": "1",
         "releaseDate": "1997-06-25T18:30:00.000Z",
-        "cover": "https://www.amazon.in%2FHarry-Potter-Philosophers-Stone-Rowling%2Fdp%2F1408855658&psig=AOvVaw0-TKzkVVUIGTpRqNJY4rbZ&ust=1599145505822000&source=images&cd=vfe&ved=2ahUKEwjD9eiv38rrAhXO9jgGHcvSCbkQjRx6BAgAEAc"
+        "cover": "https://flxt.tmsimg.com/assets/p28630_p_v8_at.jpg"
     },
     {
        
@@ -169,7 +169,7 @@ export default [
         "series": "Harry Potter",
         "seriesIndex": "2",
         "releaseDate": "1998-07-01T18:30:00.000Z",
-        "cover": "https://www.scholastic.com/content5/media/products/66/9780439064866_mres.jpg"
+        "cover": "https://alternativemovieposters.com/wp-content/uploads/2018/01/mumford_chamber.jpg"
     },
     {
         
@@ -190,7 +190,7 @@ export default [
         "series": "Harry Potter",
         "seriesIndex": "3",
         "releaseDate": "1999-07-08",
-        "cover": "https://vlebazaar.in%2FHarry-Potter-and-the-Prisoner-of-Azkaban&psig=AOvVaw0wjz31Tbzt-7AlC0U5uMRH&ust=1599146078341000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLi7kMLhyusCFQAAAAAdAAAAABAI"
+        "cover": "https://images-na.ssl-images-amazon.com/images/I/51iwe6zFDZL._SX326_BO1,204,203,200_.jpg"
     },
     {
         
@@ -211,6 +211,6 @@ export default [
         "series": "Harry Potter",
         "seriesIndex": "5",
         "releaseDate": "2003-07-21",
-        "cover": "https://www.sapnaonline.com%2Fbooks%2Fharry-potter-order-phoenix-jk-rowling-1408855690-9781408855690&psig=AOvVaw1DRrdR0vwen3mSnq7-14-S&ust=1599146422626000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNiyzOfiyusCFQAAAAAdAAAAABAD"
+        "cover": "https://pictures.abebooks.com/inventory/15775901479.jpg"
     }
 ]

@@ -1,14 +1,15 @@
 import React from 'react';
 import {StyleSheet,ScrollView,Text,Image,View,Modal,Button} from 'react-native';
 
-import LabeledValue from '../components/labeled-value';
+import LabeledValue from './labeled-value';
 import globalStyle from '../styles/global';
 import Colors from '../styles/colors';
-import toast from '../components/toast';
+import toast from './toast';
 
 
-const BookDetailsScreen=({title,author,price,rating,votes})=>{
-
+const BookDetails=({book})=>{
+    
+    const {title,author,price,cover,rating,votes}=book;
     
     let onButtonClick=()=>{
       console.log('Added To Favorite');
@@ -30,7 +31,7 @@ const BookDetailsScreen=({title,author,price,rating,votes})=>{
          <LabeledValue label='rating' value={`${rating} out of 5 (${votes} votes)`} />
          
           <Image style={styles.coverImage} 
-                 source={require('../../assets/the-accursed-god-small.jpg')}
+                 source={{uri:book.cover}}
                  resizeMode='cover'
           />
 
@@ -63,5 +64,5 @@ const BookDetailsScreen=({title,author,price,rating,votes})=>{
     }
  })
 
- export default BookDetailsScreen;
+ export default BookDetails;
  
