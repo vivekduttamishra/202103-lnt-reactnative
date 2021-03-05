@@ -35,9 +35,16 @@ const BookListScreen = ({ books, getAllBooks, navigation, children }) => {
 
     
     React.useEffect(()=>{
-       
+        //this function will be called after component is rendred.
+        //initially the list would be empty
+        console.log('trying to get all books after 5 seconds');
 
-        getAllBooks();
+
+        setTimeout(()=>{
+
+            getAllBooks();
+
+        },5000);
         
 
     },[]); //never call this function a second time.

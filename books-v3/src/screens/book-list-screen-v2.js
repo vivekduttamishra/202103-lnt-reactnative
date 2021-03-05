@@ -1,20 +1,15 @@
 import React,{useState} from 'react';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { View, Text, ActivityIndicator, FlatList,Modal, Button, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, FlatList,Modal, Button, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import globalStyle from '../styles/global';
-//import books from '../data/books';
+import books from '../data/books';
 import Colors from '../styles/colors';
 import toast from '../components/toast';
 import BookDetails from '../components/book-details';
 
 
-//this will connect my component to react redux
-import {connect} from 'react-redux';
-import {getAllBooks} from '../store/book-actions';
-
 
 let BookListItem = ({ book,onSelection }) => {
-   // console.log(book.cover);
+    console.log(book.cover);
     return (
         <TouchableOpacity
                 onPress={onSelection}
@@ -31,27 +26,14 @@ let BookListItem = ({ book,onSelection }) => {
     );
 }
 
-const BookListScreen = ({ books, getAllBooks, navigation, children }) => {
+const BookListScreen = ({ navigation, children }) => {
 
-    
-    React.useEffect(()=>{
-       
-
-        getAllBooks();
-        
-
-    },[]); //never call this function a second time.
-    
-
-
-    if(!books.length){
-        console.log('list is empty...');
-        return <ActivityIndicator size='large' color='black' />;
-
-    }
+    const [selectedBook, selectBook]=useState(null);
 
     const onSelect=(book)=>{
-        navigation.navigate('Book Details',{book});
+        //toast(book.title);
+        //setState({selectedBook:book});
+        selectBook(book);
     }
     //Todo Init
     return (
@@ -69,24 +51,21 @@ const BookListScreen = ({ books, getAllBooks, navigation, children }) => {
                 }
 
             />
-           
+            <Modal visible={selectedBook!==null}  animationType="slide">
+                <View style={styles.modalStyle}>
+                    
+                    <BookDetails book={selectedBook} />
+                    <View><Button 
+                                title="Close"
+                                onPress={()=>selectBook(null)}    
+                            />
+                    </View>
+                    
+                </View>
+            </Modal>
         </View>
     );
 };
-
-BookListScreen.navigationOptions=({navigation})=>{
-
-    return {
-        headerRight:(
-            <TouchableOpacity style={styles.iconButton} 
-                    onPress={()=>navigation.navigate('Book Add')}
-                >
-                <FontAwesome5 style={styles.icon} name="book-medical" size={32} color="black" />
-            </TouchableOpacity>
-        )
-    }
-
-}
 
 
 const styles = StyleSheet.create({
@@ -102,13 +81,6 @@ const styles = StyleSheet.create({
         width: "50%",
         height: 300,
         marginVertical:20
-    },
-    iconButton:{
-        marginRight:10,
-        paddingRight:10
-    },
-    icon:{
-        fontSize:28
     },
     listItem: {
         margin: 10,
@@ -171,46 +143,4 @@ const styles = StyleSheet.create({
     }
 
 });
-
-
-//this function can inject reduxState 
-//as a 'prop' to any react component
-const mapReduxStateToProps = (state) => {
-    //console.log('mapReduxStateToProps',state);
-    return {
-        books: state.books
-    }
-}
-
-//we can also add external functions to my props
-//all functions mentioned here, will not be avialable in my props
-const actions={
-    getAllBooks
-}
-
-
-// connect will create a new component that will wrap 
-// my existing component
-// and it will add the required prop to my component
-//using mapReduxStateToProps function
-
-
-
-const modifiedComponent= connect(mapReduxStateToProps, //inject reduxState to my component props
-                                actions //dispatch all these actions to redux when called
-                                    ) 
-                                ( BookListScreen);
-
-
-// a dummy code of what will happen inside
-
-/*
-const ModifiedComponent= (reduxState) => {
-
-    let props= mapReduxStateToProps(reduxState);
-
-    return <BookListScreen {...props} />;
-
-}*/
-
-export default modifiedComponent;
+export default BookListScreen;

@@ -1,8 +1,7 @@
 
-import {combineReducers, createStore, applyMiddleware} from 'redux';
+import {combineReducers, createStore} from 'redux';
 
 import {booksReducer,favoriteBooksRequest} from './book-reducers';
-import reduxThunk from 'redux-thunk';
 
 
 let reducer=combineReducers({
@@ -11,6 +10,6 @@ let reducer=combineReducers({
 });
 
 
-let store = createStore(reducer, applyMiddleware(reduxThunk));
+let store = createStore(reducer);
 
 export default store; //this redux store will be used by react

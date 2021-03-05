@@ -15,9 +15,9 @@ const BookDetails=({book,navigation, deleteBook})=>{
     const {title,author,price,cover,rating,votes}=book;
     
     let onButtonClick=()=>{
-      console.log('deleting book ',book.id);
+      console.log('deleting book ',book.isbn);
       //toast('Added to Favorite');
-      deleteBook(book.id);
+      deleteBook(book.isbn);
       navigation.pop();
     }
 

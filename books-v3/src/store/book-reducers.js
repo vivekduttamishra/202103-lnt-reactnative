@@ -1,4 +1,4 @@
-//import books from '../data/books';
+import books from '../data/books';
 import * as Actions from './book-actions';
 
 //I am assuming we will get a list of books
@@ -11,12 +11,14 @@ export const booksReducer = (initialState=[], action)=>{
             return [action.payload,...initialState]; 
             
         case Actions.BOOK_GET_ALL:
-            return action.payload; 
+            //normally here we should be calling http request
+            console.log('returning a new set of books');
+            return [...books]; 
 
         case Actions.BOOK_DELETE:
             console.log('trying to delete',action.payload);
-            let result =initialState.filter( book=> book.id.localeCompare(action.payload)!==0);
-            console.log(result.map(result=>({id:result.id, title:result.title})));
+            let result =initialState.filter( book=> book.isbn.localeCompare(action.payload)!==0);
+            console.log(result.map(result=>({id:result.isbn, title:result.title})));
             return result;
         case Actions.BOOK_EDIT:
             return initialState.map( book=> book.id===action.payload.id?action.payload:book);
