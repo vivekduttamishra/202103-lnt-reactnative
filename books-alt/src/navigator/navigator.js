@@ -14,7 +14,7 @@ import HomeScreen from '../screens/home-screen';
 
 
 
-let booksNavigator= createStackNavigator(
+let bookFlowNavigator= createStackNavigator(
     //list of of my screens
     {
         "Book List":BookListScreen,
@@ -29,10 +29,14 @@ let booksNavigator= createStackNavigator(
     }
 );
 
-const navigator=createSwitchNavigator({
-    "Splash Screen":HomeScreen,
-    "Books" : booksNavigator
-})
+
+let navigator= createSwitchNavigator(
+    {
+        "Home":HomeScreen,
+        "Books": bookFlowNavigator
+    }
+)
+
 
 
 export default createAppContainer(navigator);
