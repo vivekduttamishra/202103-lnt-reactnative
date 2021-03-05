@@ -30,7 +30,7 @@ let booksNavigator= createStackNavigator(
 );
 
 const navigator=createSwitchNavigator({
-    "Splash Screen":HomeScreen,
+    //"Splash Screen":HomeScreen,
     "Books" : booksNavigator
 })
 

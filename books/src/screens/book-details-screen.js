@@ -12,7 +12,7 @@ import BookDetails from '../components/book-details';
 const BookDetailsScreen=({navigation})=>{
 
     let book= navigation.getParam('book');
-    return <BookDetails book={book} />
+    return <BookDetails navigation={navigation} book={book} />
  };
 
 

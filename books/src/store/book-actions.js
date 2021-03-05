@@ -22,10 +22,12 @@ export const getBookById=(id)=>{
 }
 
 export const getAllBooks=()=>{
-    return {types:BOOK_GET_ALL};
+    console.log('getAllBooks is called');
+    return {type:BOOK_GET_ALL};
 }
 
 export const deleteBook=(id)=>{
+    console.log('trying to delete',id);
     return {type:BOOK_DELETE, payload:id};
 }
 
@@ -43,7 +45,7 @@ export const deleteFromFavorite=(id)=>{
     return {type:FAVORITE_REMOVE, payload:id};
 }
 export const getAllFavorites=()=>{
-    return {types:FAVORITE_GET_ALL};
+    return {type:FAVORITE_GET_ALL};
 }
 
 

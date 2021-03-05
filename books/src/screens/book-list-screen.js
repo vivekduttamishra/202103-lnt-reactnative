@@ -1,16 +1,20 @@
 import React,{useState} from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { View, Text, FlatList,Modal, Button, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList,Modal, Button, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import globalStyle from '../styles/global';
-import books from '../data/books';
+//import books from '../data/books';
 import Colors from '../styles/colors';
 import toast from '../components/toast';
 import BookDetails from '../components/book-details';
 
 
+//this will connect my component to react redux
+import {connect} from 'react-redux';
+import {getAllBooks} from '../store/book-actions';
+
 
 let BookListItem = ({ book,onSelection }) => {
-    console.log(book.cover);
+   // console.log(book.cover);
     return (
         <TouchableOpacity
                 onPress={onSelection}
@@ -27,9 +31,31 @@ let BookListItem = ({ book,onSelection }) => {
     );
 }
 
-const BookListScreen = ({ navigation, children }) => {
+const BookListScreen = ({ books, getAllBooks, navigation, children }) => {
 
     
+    React.useEffect(()=>{
+        //this function will be called after component is rendred.
+        //initially the list would be empty
+        console.log('trying to get all books after 5 seconds');
+
+
+        setTimeout(()=>{
+
+            getAllBooks();
+
+        },5000);
+        
+
+    },[]); //never call this function a second time.
+    
+
+
+    if(!books.length){
+        console.log('list is empty...');
+        return <ActivityIndicator size='large' color='black' />;
+
+    }
 
     const onSelect=(book)=>{
         navigation.navigate('Book Details',{book});
@@ -152,4 +178,46 @@ const styles = StyleSheet.create({
     }
 
 });
-export default BookListScreen;
+
+
+//this function can inject reduxState 
+//as a 'prop' to any react component
+const mapReduxStateToProps = (state) => {
+    //console.log('mapReduxStateToProps',state);
+    return {
+        books: state.books
+    }
+}
+
+//we can also add external functions to my props
+//all functions mentioned here, will not be avialable in my props
+const actions={
+    getAllBooks
+}
+
+
+// connect will create a new component that will wrap 
+// my existing component
+// and it will add the required prop to my component
+//using mapReduxStateToProps function
+
+
+
+const modifiedComponent= connect(mapReduxStateToProps, //inject reduxState to my component props
+                                actions //dispatch all these actions to redux when called
+                                    ) 
+                                ( BookListScreen);
+
+
+// a dummy code of what will happen inside
+
+/*
+const ModifiedComponent= (reduxState) => {
+
+    let props= mapReduxStateToProps(reduxState);
+
+    return <BookListScreen {...props} />;
+
+}*/
+
+export default modifiedComponent;

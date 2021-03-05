@@ -6,22 +6,27 @@ import globalStyle from '../styles/global';
 import Colors from '../styles/colors';
 import toast from './toast';
 
+import {connect} from 'react-redux';
+import {deleteBook} from '../store/book-actions';
 
-const BookDetails=({book})=>{
+
+const BookDetails=({book,navigation, deleteBook})=>{
     
     const {title,author,price,cover,rating,votes}=book;
     
     let onButtonClick=()=>{
-      console.log('Added To Favorite');
-      toast('Added to Favorite');
+      console.log('deleting book ',book.isbn);
+      //toast('Added to Favorite');
+      deleteBook(book.isbn);
+      navigation.pop();
     }
 
     return (
       <ScrollView style={styles.container}>
           <View style={styles.buttonStyle}>
             <Button color={Colors.primaryColor} 
-                   title='Add to Favorite' 
-                   onPress={onButtonClick}
+                   title='delete' 
+                   onPress={(onButtonClick)}
                    />
           </View>
           <Text style={styles.title}>{title}</Text>
@@ -64,5 +69,10 @@ const BookDetails=({book})=>{
     }
  })
 
- export default BookDetails;
+
+ const mapReduxStateToProps= state => ({...state});
+ const actions={
+  deleteBook
+ }
+ export default connect(mapReduxStateToProps,actions)(BookDetails);
  

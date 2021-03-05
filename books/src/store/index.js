@@ -12,4 +12,4 @@ let reducer=combineReducers({
 
 let store = createStore(reducer);
 
-
+export default store; //this redux store will be used by react
